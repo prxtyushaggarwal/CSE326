@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student ID Card Replacement & Reissue System - LPU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-area">
+                <div class="logo-badge">LPU</div>
+                <div>
+                    <h1>Lovely Professional University</h1>
+                    <p class="subtitle">Division of Student Welfare — ID Card Reissue Cell</p>
+                </div>
+            </div>
+            <div class="header-tag">CSE326 CA-2 Project</div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- Welcome Banner -->
+        <section class="banner">
+            <h2>Student Identity Card (ID) Replacement & Reissue Portal</h2>
+            <p>Apply for a duplicate/reissued ID card, check mandatory document requirements, and calculate processing fees.</p>
+        </section>
+
+        <div class="grid-layout">
+            
+            <!-- Left Column: Form & Checklist -->
+            <div class="column-left">
+                
+                <!-- Section 1: Application Form -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>1. Student Details & Reissue Reason</h3>
+                    </div>
+                    <form id="reissueForm" onsubmit="handleFormSubmit(event)">
+                        
+                        <div class="form-group">
+                            <label for="fullName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullName" placeholder="e.g. Rahul Sharma" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="rollNo">Registration / Roll No <span class="required">*</span></label>
+                                <input type="text" id="rollNo" placeholder="e.g. 12401928" required>
+                            </div>
+                            <div class="form-group half">
+                                <label for="bloodGroup">Blood Group <span class="required">*</span></label>
+                                <select id="bloodGroup" required>
+                                    <option value="">-- Select Blood Group --</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="branch">Branch / Department <span class="required">*</span></label>
+                            <select id="branch" required>
+                                <option value="">-- Select Branch --</option>
+                                <option value="B.Tech Computer Science & Engineering">B.Tech Computer Science & Engineering (CSE)</option>
+                                <option value="B.Tech Electronics & Communication">B.Tech Electronics & Communication (ECE)</option>
+                                <option value="B.Tech Mechanical Engineering">B.Tech Mechanical Engineering</option>
+                                <option value="BCA / MCA">BCA / MCA</option>
+                                <option value="B.Sc IT / Data Science">B.Sc IT / Data Science</option>
+                                <option value="BBA / MBA">BBA / MBA</option>
+                            </select>
+                        </div>
+
+                        <!-- Reason for Reissue Selection -->
+                        <div class="form-group">
+                            <label>Reason for Reissue <span class="required">*</span></label>
+                            <div class="radio-options">
+                                <label class="radio-label">
+                                    <input type="radio" name="reissueReason" value="Lost" checked onchange="handleReasonChange()">
+                                    Lost
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="reissueReason" value="Damaged" onchange="handleReasonChange()">
+                                    Damaged
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="reissueReason" value="Defaced" onchange="handleReasonChange()">
+                                    Defaced (Unreadable/Broken)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Mandatory Document Checklist Simulator -->
+                        <div class="checklist-section">
+                            <div class="checklist-header">
+                                <h4>2. Mandatory Document Checklist Simulator</h4>
+                                <span class="badge" id="reasonBadge">Reason: Lost</span>
+                            </div>
+                            <p class="checklist-note" id="checklistInstruction">
+                                For <strong>Lost</strong> ID cards, police report acknowledgment is mandatory.
+                            </p>
+
+                            <div class="checklist-items">
+                                <!-- Police Lost Report item -->
+                                <div class="check-item" id="itemPoliceReport">
+                                    <input type="checkbox" id="chkPoliceReport" required>
+                                    <div class="check-text">
+                                        <label for="chkPoliceReport"><strong>Police Lost Report / DDR Acknowledgment</strong> <span class="badge-req">Mandatory for Lost</span></label>
+                                        <small>Online DDR receipt or physical police station diary copy.</small>
+                                    </div>
+                                </div>
+
+                                <!-- Old Damaged Card item -->
+                                <div class="check-item disabled-item" id="itemOldCard">
+                                    <input type="checkbox" id="chkOldCard">
+                                    <div class="check-text">
+                                        <label for="chkOldCard"><strong>Physical Submission of Old Damaged Card</strong> <span class="badge-req">Mandatory for Damaged/Defaced</span></label>
+                                        <small>Must surrender the broken or faded card at the security counter.</small>
+                                    </div>
+                                </div>
+
+                                <!-- Identity verification proof -->
+                                <div class="check-item" id="itemIdProof">
+                                    <input type="checkbox" id="chkIdProof" required>
+                                    <div class="check-text">
+                                        <label for="chkIdProof"><strong>University Admission Receipt or UMS Dashboard Screenshot</strong></label>
+                                        <small>Used for identity confirmation and student record match.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Reissue Fee Calculator -->
+                        <div class="calculator-section">
+                            <h4>3. Reissue Fee Calculator</h4>
+                            <div class="fee-options">
+                                <label class="fee-option">
+                                    <input type="radio" name="feePlan" value="standard" checked onchange="calculateTotalFee()">
+                                    <div class="fee-info">
+                                        <span class="fee-title">Standard Processing</span>
+                                        <span class="fee-time">Dispatched in 7-10 working days</span>
+                                    </div>
+                                    <span class="fee-price">₹200</span>
+                                </label>
+
+                                <label class="fee-option">
+                                    <input type="radio" name="feePlan" value="urgent" onchange="calculateTotalFee()">
+                                    <div class="fee-info">
+                                        <span class="fee-title">Urgent 24-Hour Processing</span>
+                                        <span class="fee-time">Priority delivery within 24 hours</span>
+                                    </div>
+                                    <span class="fee-price">₹500</span>
+                                </label>
+                            </div>
+
+                            <!-- Live Price Summary Box -->
+                            <div class="fee-summary-box">
+                                <div class="fee-row">
+                                    <span>Base Reissue Fee:</span>
+                                    <span id="baseFeeText">₹200</span>
+                                </div>
+                                <div class="fee-row">
+                                    <span>Urgent Express Fee:</span>
+                                    <span id="urgentFeeText">₹0</span>
+                                </div>
+                                <hr>
+                                <div class="fee-row total-row">
+                                    <span>Total Payable Fee:</span>
+                                    <span id="totalFeeText">₹200</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Submission Controls -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="btnSubmit">Submit Reissue Application</button>
+                            <button type="button" class="btn btn-secondary" onclick="resetAll()">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Status & Live Application Receipt -->
+            <div class="column-right">
+                
+                <!-- Quick Instructions Card -->
+                <div class="card instruction-card">
+                    <h3>Guidelines for LPU Students</h3>
+                    <ul class="steps-list">
+                        <li><strong>Step 1:</strong> Fill your exact Roll Number and details as per UMS.</li>
+                        <li><strong>Step 2:</strong> Select the genuine reason. Document requirements update automatically.</li>
+                        <li><strong>Step 3:</strong> Mark the required documents in the checklist simulator.</li>
+                        <li><strong>Step 4:</strong> Select either Standard or Urgent 24-Hour dispatch fee.</li>
+                        <li><strong>Step 5:</strong> Submit to generate your official Reissue Acknowledgement Slip.</li>
+                    </ul>
+                </div>
+
+                <!-- Live Acknowledgment Slip (Hidden until submission) -->
+                <div class="card slip-card" id="slipCard" style="display: none;">
+                    <div class="slip-header">
+                        <span class="slip-status">APPLICATION SUBMITTED</span>
+                        <h4>Reissue Acknowledgement Slip</h4>
+                        <p class="slip-id">App Ref: <strong id="slipAppNo">LPU-ID-2026-0001</strong></p>
+                    </div>
+
+                    <div class="id-preview">
+                        <div class="id-chip"></div>
+                        <div class="id-details">
+                            <p><strong>Student:</strong> <span id="slipName">---</span></p>
+                            <p><strong>Roll No:</strong> <span id="slipRoll">---</span></p>
+                            <p><strong>Branch:</strong> <span id="slipBranch">---</span></p>
+                            <p><strong>Blood Group:</strong> <span id="slipBlood">---</span></p>
+                            <p><strong>Reason:</strong> <span id="slipReason">---</span></p>
+                            <p><strong>Delivery Mode:</strong> <span id="slipPlan">---</span></p>
+                            <p><strong>Total Fee Paid:</strong> <span id="slipFee" class="highlight-fee">---</span></p>
+                        </div>
+                    </div>
+
+                    <div class="slip-footer">
+                        <p>✅ Documents validated via checklist simulator</p>
+                        <p class="timestamp" id="slipTime">Submitted on: --</p>
+                        <button class="btn btn-outline" onclick="window.print()">Print Acknowledgement</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Lovely Professional University &copy; 2026 | CSE326 Web Development Assessment (CA-2)</p>
+        <p>Simple & Responsive Vanilla HTML5 / CSS3 / JavaScript Implementation</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

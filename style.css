@@ -1,0 +1,568 @@
+/* ========================================================
+   CSE326 - Internet Programming | CA-2 Project
+   Topic: Student ID Card Replacement & Reissue System
+   Simple, clean, and responsive CSS styling
+   ======================================================== */
+
+/* Universal Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6fa;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #ffffff;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-badge {
+    background-color: #f7941d; /* LPU orange tone */
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #d1d9ec;
+}
+
+.header-tag {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Main Container */
+.container {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+/* Banner */
+.banner {
+    background-color: #ffffff;
+    border-left: 5px solid #f7941d;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.banner h2 {
+    font-size: 18px;
+    color: #1e3c72;
+    margin-bottom: 4px;
+}
+
+.banner p {
+    font-size: 14px;
+    color: #666666;
+}
+
+/* Grid Layout */
+.grid-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.column-left {
+    flex: 2;
+}
+
+.column-right {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e8ec;
+}
+
+.card-header {
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eef1f6;
+}
+
+.card-header h3 {
+    font-size: 16px;
+    color: #1e3c72;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.half {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333333;
+}
+
+.required {
+    color: #d93025;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #fafafa;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: #2a5298;
+    background-color: #ffffff;
+}
+
+/* Radio Buttons */
+.radio-options {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #f7f9fc;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #e2e6ea;
+}
+
+.radio-label {
+    font-size: 13px;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+/* Checklist Simulator Section */
+.checklist-section {
+    background-color: #fbfcfe;
+    border: 1px solid #dce4ec;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 18px 0;
+}
+
+.checklist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.checklist-header h4 {
+    font-size: 15px;
+    color: #1e3c72;
+}
+
+.badge {
+    background-color: #1e3c72;
+    color: #ffffff;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.badge-req {
+    background-color: #f7941d;
+    color: #ffffff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+.checklist-note {
+    font-size: 12px;
+    color: #555555;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    background-color: #fff8e1;
+    border-left: 3px solid #ffb300;
+    border-radius: 3px;
+}
+
+.checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.check-item input[type="checkbox"] {
+    margin-top: 4px;
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+.check-text label {
+    margin-bottom: 2px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.check-text small {
+    display: block;
+    color: #777777;
+    font-size: 11px;
+}
+
+/* Disabled/dimmed checklist item */
+.disabled-item {
+    opacity: 0.55;
+    background-color: #f0f2f5;
+}
+
+/* Calculator Section */
+.calculator-section {
+    background-color: #f9fbfd;
+    border: 1px solid #dce4ec;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 18px 0;
+}
+
+.calculator-section h4 {
+    font-size: 15px;
+    color: #1e3c72;
+    margin-bottom: 12px;
+}
+
+.fee-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.fee-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fee-option:hover {
+    border-color: #1e3c72;
+}
+
+.fee-option input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.15);
+}
+
+.fee-info {
+    flex-grow: 1;
+}
+
+.fee-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #222222;
+}
+
+.fee-time {
+    display: block;
+    font-size: 11px;
+    color: #666666;
+}
+
+.fee-price {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1e3c72;
+}
+
+/* Fee Summary Box */
+.fee-summary-box {
+    background-color: #ffffff;
+    border: 1px dashed #2a5298;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 13px;
+}
+
+.fee-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+}
+
+.fee-summary-box hr {
+    border: none;
+    border-top: 1px solid #e2e6ea;
+    margin: 8px 0;
+}
+
+.total-row {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1e3c72;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background-color: #f7941d;
+    color: #ffffff;
+    flex: 2;
+}
+
+.btn-primary:hover {
+    background-color: #e07d08;
+}
+
+.btn-secondary {
+    background-color: #e9ecef;
+    color: #333333;
+    flex: 1;
+}
+
+.btn-secondary:hover {
+    background-color: #dde1e5;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #1e3c72;
+    color: #1e3c72;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.btn-outline:hover {
+    background-color: #1e3c72;
+    color: #ffffff;
+}
+
+/* Instruction Card */
+.instruction-card h3 {
+    font-size: 15px;
+    color: #1e3c72;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eef1f6;
+    padding-bottom: 8px;
+}
+
+.steps-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    color: #444444;
+}
+
+.steps-list li {
+    padding-left: 6px;
+    border-left: 2px solid #f7941d;
+}
+
+/* Slip Card (Preview Receipt) */
+.slip-card {
+    border: 2px solid #28a745;
+    background-color: #ffffff;
+}
+
+.slip-header {
+    text-align: center;
+    border-bottom: 1px dashed #cccccc;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.slip-status {
+    background-color: #d4edda;
+    color: #155724;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+.slip-header h4 {
+    color: #1e3c72;
+    font-size: 16px;
+}
+
+.slip-id {
+    font-size: 12px;
+    color: #555555;
+    margin-top: 2px;
+}
+
+.id-preview {
+    background: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.id-details p {
+    font-size: 13px;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.highlight-fee {
+    font-size: 15px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.slip-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #555555;
+}
+
+.slip-footer .timestamp {
+    font-size: 11px;
+    color: #888888;
+    margin-top: 4px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    color: #666666;
+    font-size: 12px;
+}
+
+.footer p {
+    margin-bottom: 4px;
+}
+
+/* Responsive Styles for Mobile / Tablets */
+@media (max-width: 768px) {
+    .grid-layout {
+        flex-direction: column;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-tag {
+        align-self: flex-start;
+    }
+}
